@@ -40,3 +40,12 @@ interface Ethernet0/3
 ...
 
 """
+import sys
+
+file_name = sys.argv[1]
+# file_name = 'config_sw1.txt'
+print(sys.argv)
+with open(file_name) as config:
+    for line in config:
+        if not line.startswith('!'):
+            print(line.rstrip())

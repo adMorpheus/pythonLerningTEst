@@ -13,3 +13,11 @@ Outbound Interface    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+column_wigth = 25
+with open('ospf.txt') as src:
+    for line in src:
+        print(f'''{'Prefix':<{column_wigth}}{line.split()[1]}
+{'AD/Metric':<{column_wigth}}{line.split()[2].strip('[]')}
+{'Next-Hop':<{column_wigth}}{line.split()[4].rstrip(',')}
+{'Last update':<{column_wigth}}{line.split(', ')[1]}
+{'Outbound Interface':<{column_wigth}}{line.split(', ')[-1]}''')
