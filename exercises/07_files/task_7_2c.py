@@ -15,5 +15,22 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
-
 ignore = ["duplex", "alias", "Current configuration"]
+
+import sys
+
+src_file_name = sys.argv[1]
+src_file_name = 'config_sw1.txt'
+dst_file_name = sys.argv[2]
+dst_file_name = 'config_sw1_cleared.txt'
+
+print(sys.argv)
+with open(src_file_name) as config, open('config_sw1_cleared.txt', 'w') as dst:
+    for line in config:
+        is_common_elements_exist = False
+        for ignore_pattern in ignore:
+            if ignore_pattern in line:
+                is_common_elements_exist = True
+        if not is_common_elements_exist:
+            print(line.rstrip())
+            dst.write(line)

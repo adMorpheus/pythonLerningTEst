@@ -17,3 +17,10 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+with open('CAM_table.txt') as dst_file:
+    for line in dst_file:
+        if len(line.split()) == 4:
+            if len(line.split()[1].split('.')) == 3:
+                result = line.strip().split()
+                result.remove('DYNAMIC')
+                print(f'{result[0]:<7}{result[1]:<7}{result[2]:>7}')
